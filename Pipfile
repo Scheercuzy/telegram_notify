@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+flake8 = "*"
+autopep8 = "*"
+
+[packages]
+python-telegram-bot = "*"
+flask = "*"
+uwsgi = "*"
+
+[requires]
+python_version = "3.6"
+
+[scripts]
+dev = "python -m telegram_notify --dev"
+wsgi = "uwsgi --socket 0.0.0.0:8990 --protocol=http -w wsgi:app"
+bot = "python -m telegram_notify"

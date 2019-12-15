@@ -1,0 +1,11 @@
+[Unit]
+Description=uWSGI instance to serve telegram_notify's bot
+After=network.target
+
+[Service]
+WorkingDirectory=/home/max/myproject
+Environment="PATH=/home/max/myproject/myprojectenv/bin"
+ExecStart=/home/max/myproject/myprojectenv/bin/python -m /home/max/myproject/telegram_notify
+
+[Install]
+WantedBy=multi-user.target
