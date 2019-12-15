@@ -5,6 +5,8 @@ After=network.target
 [Service]
 WorkingDirectory=/home/max/myproject
 Environment="PATH=/home/max/myproject/myprojectenv/bin"
+Environment="TELEGRAM_TOKEN=1234"
+Environment="CHAT_ID=123"
 ExecStart=/home/max/myproject/myprojectenv/bin/python -m /home/max/myproject/telegram_notify
 
 [Install]
