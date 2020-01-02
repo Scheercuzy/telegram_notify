@@ -1,12 +1,10 @@
 import logging
-from telegram_notify import args
-from telegram_notify.bot import updater
-from telegram_notify.webserver import app
-
+from telegram_notify import celery, updater
+from telegram_notify.factory import create_app
 
 logging.basicConfig(level=logging.INFO)
 
 if __name__ == "__main__":
+    app = create_app(celery=celery)
     updater.start_polling()
-    if args.dev:
-        app.run(host='localhost', port=8990)
+    app.run(port=8990)

@@ -11,11 +11,14 @@ autopep8 = "*"
 python-telegram-bot = "*"
 flask = "*"
 uwsgi = "*"
+celery = "*"
+redis = "*"
 
 [requires]
 python_version = "3.6"
 
 [scripts]
-dev = "python -m telegram_notify --dev"
-wsgi = "uwsgi --socket 0.0.0.0:8990 --protocol=http -w wsgi:app"
-bot = "python -m telegram_notify"
+_web = "uwsgi --socket 0.0.0.0:8990 --protocol=http -w wsgi:webserver"
+_bot = "python -m telegram_notify"
+_celery = "celery worker -A wsgi:celery -l INFO"
+_dev = "python -m telegram_notify"

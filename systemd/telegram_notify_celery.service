@@ -1,0 +1,11 @@
+[Unit]
+Description=Celery instance to serve telegram_notify's queued tasks
+After=network.target
+
+[Service]
+WorkingDirectory=/home/max/myproject
+Environment="PATH=/home/max/myproject/myprojectenv/bin"
+ExecStart=/home/max/myproject/myprojectenv/bin/celery worker -A wsgi:celery
+
+[Install]
+WantedBy=multi-user.target

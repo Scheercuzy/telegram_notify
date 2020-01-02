@@ -1,4 +1,4 @@
-from telegram_notify.webserver import app
+from telegram_notify.factory import create_app
+from telegram_notify import celery  # noqa
 
-if __name__ == "__main__":
-    app.run()
+webserver = create_app(celery=celery)

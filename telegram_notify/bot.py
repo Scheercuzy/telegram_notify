@@ -1,7 +1,7 @@
-from telegram.ext import Updater, CommandHandler
-from telegram_notify import TOKEN
+from telegram.ext import CommandHandler
 
-updater = Updater(token=TOKEN, use_context=True)
+from telegram_notify import updater
+
 dispatcher = updater.dispatcher
 bot = updater.bot
 
