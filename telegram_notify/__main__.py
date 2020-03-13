@@ -1,8 +1,7 @@
 import logging
 import argparse
 
-from telegram_notify import app
-from telegram_notify.bot import updater
+from telegram_notify import app, updater
 
 logging.basicConfig(level=logging.INFO)
 
