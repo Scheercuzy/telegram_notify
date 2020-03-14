@@ -33,3 +33,5 @@ app.register_blueprint(importlib.import_module('.urls', __name__).blueprint)
 
 # Setup updater
 updater = Updater(token=Settings.TOKEN, use_context=True)
+
+importlib.import_module('.bot', __name__)

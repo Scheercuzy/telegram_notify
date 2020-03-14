@@ -1,10 +1,14 @@
+from flask import Blueprint
 from flask import request
 
+from telegram_notify import tasks
 from telegram_notify.settings import Settings
-from telegram_notify.tasks import send_message
+
+blueprint = Blueprint("blueprint", __name__)
 
 
-def _index():
+@blueprint.route('/', methods=['POST'])
+def index():
     if not request.is_json:
         return "Error, only accepts json"
 
@@ -13,5 +17,5 @@ def _index():
     if "msg" not in data:
         return "Missing msg key"
 
-    send_message.delay(Settings.CHAT_ID, data["msg"])
+    tasks.send_message.delay(Settings.CHAT_ID, data["msg"])
     return "Success"
