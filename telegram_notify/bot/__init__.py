@@ -9,3 +9,7 @@ dispatcher = updater.dispatcher
 
 dispatcher.add_handler(
     CommandHandler('start', cmds.start))
+dispatcher.add_handler(
+    CommandHandler('access', cmds.access))
+dispatcher.add_handler(
+    CommandHandler('revoke', cmds.revoke))

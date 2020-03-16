@@ -19,3 +19,4 @@ def send_message(chat_id, msg, retry=1):
             retry += 1
         time.sleep(retry)
         send_message.delay(chat_id, msg, retry=retry)
+    return f"To: {chat_id}\n{msg}"
