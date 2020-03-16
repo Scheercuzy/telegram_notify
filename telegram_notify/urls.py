@@ -23,4 +23,5 @@ def index():
         for chat_id in query:
             chat_id[0]
             tasks.send_message.delay(chat_id[0], data["msg"])
+    Session.remove()
     return "Success"
