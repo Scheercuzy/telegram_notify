@@ -2,11 +2,22 @@ import importlib
 from flask import Flask
 from celery import Celery
 from telegram.ext import Updater
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, scoped_session
 
 from telegram_notify.settings import Settings
+from telegram_notify.models import Base
 
 # Setup app
 app = Flask(__name__)
+
+
+# Setup db
+engine = create_engine('sqlite:///database.db')
+Base.metadata.bind = engine
+db_session_factory = sessionmaker(bind=engine)
+Session = scoped_session(db_session_factory)
+
 
 # Setup celery
 celery = Celery(

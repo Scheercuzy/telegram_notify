@@ -1,15 +1,21 @@
 import logging
 import argparse
 
-from telegram_notify import app, updater
+from telegram_notify import app, updater, engine
+from telegram_notify.models import Base
 
 logging.basicConfig(level=logging.INFO)
 
 parser = argparse.ArgumentParser()
-group = parser.add_mutually_exclusive_group(required=True)
+parser.add_argument('--createdb', action='store_true')
+group = parser.add_mutually_exclusive_group(required=False)
 group.add_argument('--web', action='store_true')
 group.add_argument('--bot', action='store_true')
 args = parser.parse_args()
+
+if args.createdb:
+    Base.metadata.create_all(engine)
+
 
 if args.web:
     print("Only webserver running")
