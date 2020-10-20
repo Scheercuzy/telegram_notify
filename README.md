@@ -11,7 +11,7 @@ pipenv install
 
 Make sure Redis server is running on your server
 
-Configure webserver.ini 
+Configure webserver.ini
 
 Configure the service files on systemd
 
@@ -25,7 +25,7 @@ sudo systemctl start ${PWD}/systemd/telegram_notify_celery.service
 sudo systemctl start ${PWD}/systemd/telegram_notify_bot.service
 ```
 
-You can then enable them if you wish to do so by running 
+You can then enable them if you wish to do so by running
 
 ```bash
 sudo systemctl enable telegram_notify_webserver.service
@@ -41,7 +41,7 @@ curl -H "Content-Type: application/json" -XPOST http://localhost:8990 -d '{"msg"
 
 ## Docker
 
-### Building Images 
+### Building Images
 
 webserver
 

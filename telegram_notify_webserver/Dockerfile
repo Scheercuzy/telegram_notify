@@ -10,4 +10,4 @@ WORKDIR /config
 
 ENV REDIS_PORT 6379
 
-CMD [ "uwsgi", "--chdir", "/app", "--ini", "/app/webserver.ini" ]
+CMD [ "uwsgi", "--ini", "/app/webserver.ini" ]
