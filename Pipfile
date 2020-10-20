@@ -14,12 +14,14 @@ uwsgi = "*"
 celery = "*"
 redis = "*"
 sqlalchemy = "*"
+pipenv-setup = "*"
 
 [requires]
 python_version = "3.6"
 
 [scripts]
-web = "uwsgi --ini webserver.ini"
-celery = "celery worker -A wsgi:celery -l INFO"
-_web = "python -m telegram_notify --web"
-_bot = "python -m telegram_notify --bot"
+prod-web = "uwsgi --ini webserver.ini"
+prod-cel = "celery -A wsgi:celery worker -l INFO"
+dev-web = "python -m telegram_notify --web"
+dev-bot = "python -m telegram_notify --bot"
+setup = "pipenv-setup sync"
