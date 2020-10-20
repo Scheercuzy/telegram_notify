@@ -55,24 +55,18 @@ worker
 docker build . -f telegram_notify_worker/Dockerfile --tag telegram_notify_worker:latest
 ```
 
+bot
+
+```bash
+docker build . -f telegram_notify_bot/Dockerfile --tag telegram_notify_bot:latest
+```
+
 #### Running Images
 
 You need a redis container running first
 
 ```bash
 docker run --name redis -p 6379:6379 -d redis
-```
-
-webserver
-
-```bash
-docker run --name telegram_notify_webserver --env-file ./.env -p 8990:8990 --rm telegram_notify_webserver:latest
-```
-
-webserver
-
-```bash
-docker run --name telegram_notify_worker --env-file ./.env --rm telegram_notify_worker:latest
 ```
 
 Required environment variables:
@@ -83,4 +77,22 @@ ACCESS_TOKEN=
 
 REDIS_URL=redis
 REDIS_PORT=6379
+```
+
+webserver
+
+```bash
+docker run --name telegram_notify_webserver --env-file ./.env -p 8990:8990 --rm telegram_notify_webserver:latest
+```
+
+worker
+
+```bash
+docker run --name telegram_notify_worker --env-file ./.env --rm telegram_notify_worker:latest
+```
+
+bot
+
+```bash
+docker run --name telegram_notify_bot --env-file ./.env --rm telegram_notify_bot:latest
 ```

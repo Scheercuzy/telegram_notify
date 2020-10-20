@@ -20,8 +20,8 @@ pipenv-setup = "*"
 python_version = "3.6"
 
 [scripts]
-__uwsgi = "uwsgi --ini webserver.ini"
-__celery = "celery -A telegram_notify:celery worker -l INFO"
-dev-web = "python -m telegram_notify --web"
-dev-bot = "python -m telegram_notify --bot"
+_uwsgi = "uwsgi --ini webserver.ini"
+_celery = "celery -A telegram_notify:celery worker -l INFO"
+_bot = "python -m telegram_notify --bot"
+dev_web = "python -m telegram_notify --web"
 setup = "pipenv-setup sync"
