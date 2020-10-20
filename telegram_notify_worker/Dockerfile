@@ -2,10 +2,10 @@ FROM python:3.6
 
 COPY . /app
 
-WORKDIR /app
+RUN pip install /app
 
-RUN pip install .
+WORKDIR /config
 
 ENV REDIS_PORT 6379
 
-CMD [ "celery", "-A", "wsgi:celery", "worker", "-l", "INFO" ]
+CMD [ "celery", "-A", "telegram_notify:celery", "worker", "-l", "INFO" ]

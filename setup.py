@@ -7,7 +7,7 @@ def readme():
 
 
 setup(
-    name="Telegram Notify",
+    name="telegram-notify",
     version="1",
     python_requires=">=3.6",
     description="""A way to send notifications through Telegram""",
