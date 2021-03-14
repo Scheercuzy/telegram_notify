@@ -1,0 +1,6 @@
+POST http://localhost:8990
+content-type: application/json
+
+{
+    "msg": "this is a test message"
+}

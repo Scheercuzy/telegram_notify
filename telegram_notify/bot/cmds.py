@@ -3,7 +3,7 @@ from sqlalchemy.orm.exc import NoResultFound
 from telegram_notify import tasks, Session
 
 from telegram_notify.models import Person
-from telegram_notify.settings import Settings
+from telegram_notify import settings
 
 
 def start(update, context):
@@ -29,7 +29,7 @@ def access(update, context):
     args = context.args
     chat_id = update.effective_chat.id
     if args:
-        if args[0] == Settings.ACCESS_TOKEN:
+        if args[0] == settings.ACCESS_TOKEN:
             session = Session()
             try:
                 person = session.query(Person).filter_by(chat_id=chat_id).one()

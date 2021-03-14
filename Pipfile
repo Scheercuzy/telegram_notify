@@ -15,6 +15,7 @@ celery = "*"
 redis = "*"
 sqlalchemy = "*"
 pipenv-setup = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.6"
