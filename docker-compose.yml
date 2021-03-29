@@ -1,49 +1,15 @@
 version: "3.8"
 services:
-  redis:
-    image: redis:latest
-    restart: unless-stopped
-
-  telegram_notify_webserver:
+  telegram_notify:
     build:
       context: .
-      dockerfile: telegram_notify_webserver/Dockerfile
-    image: telegram_notify_webserver:latest
-    env_file: env.development
+    image: telegram_notify:latest
+    env_file: .env
+    environment: 
+      - PYTHONPATH=/app
     ports:
       - 8990:8990
     volumes:
       - ./:/config
       - ./:/app # For development
     restart: unless-stopped
-    depends_on:
-      - redis
-
-  telegram_notify_worker:
-    build:
-      context: .
-      dockerfile: telegram_notify_worker/Dockerfile
-    image: telegram_notify_worker:latest
-    env_file: env.development
-    volumes:
-      - ./:/config
-      - ./:/app # For development
-    restart: unless-stopped
-    depends_on:
-      - redis
-
-  telegram_notify_bot:
-    build:
-      context: .
-      dockerfile: telegram_notify_bot/Dockerfile
-    image: telegram_notify_bot:latest
-    env_file: env.development
-    environment: 
-      - PYTHONPATH=/app
-    volumes:
-      - ./:/config
-      - ./:/app # For development
-    restart: unless-stopped
-    entrypoint: ["python", "-m", "telegram_notify", "--bot"]
-    depends_on:
-      - redis
