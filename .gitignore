@@ -3,6 +3,6 @@
 __pycache__
 *.pyc
 *.db
-config
+config/*
 *.log
 *.rdb

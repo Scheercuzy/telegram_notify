@@ -3,13 +3,12 @@ services:
   telegram_notify:
     build:
       context: .
-    image: telegram_notify:latest
+    image: telegram_notify:development
     env_file: .env
     environment: 
       - PYTHONPATH=/app
     ports:
       - 5425:8990
     volumes:
-      - ./:/config
-      - ./:/app # For development
+      - ./config:/config
     restart: unless-stopped
