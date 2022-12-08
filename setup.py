@@ -26,7 +26,7 @@ setup(
         "cached-property==1.5.2",
         "celery==5.0.5",
         "cerberus==1.3.2",
-        "certifi==2020.12.5",
+        "certifi==2022.12.7",
         "chardet==4.0.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
         "click==7.1.2; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
         "click-didyoumean==0.0.3",
